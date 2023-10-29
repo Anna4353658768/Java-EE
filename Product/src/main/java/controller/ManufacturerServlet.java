@@ -1,17 +1,17 @@
 package controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
 * Servlet implementation class RoleServlet_
 */
-@WebServlet("/HelloManufacturerServlet")
+@WebServlet("/manufacturers")
 public class ManufacturerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -29,13 +29,15 @@ public class ManufacturerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter writer = response.getWriter();
-		try {
-			writer.println("<h2>Привет ManufacturerServlet</h2>");
-		} finally {
-			writer.close(); 
-		}
+//		response.setContentType("text/html");
+//		PrintWriter writer = response.getWriter();
+//		try {
+//			writer.println("<h2>Привет ManufacturerServlet</h2>");
+//		} finally {
+//			writer.close(); 
+//		}
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/manufacturer.jsp");
+        requestDispatcher.forward(request, response);
 	}
 	
 	/**

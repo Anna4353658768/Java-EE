@@ -20,9 +20,9 @@
 				<h2>Функции системы</h2>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item list-group-itemprimary">
-						<a href="#">Товары</a>
+						<a href="/Product/products">Товары</a>
 					<li class="list-group-item list-group-iteminfo">
-						<a href="#">Производители</a> 
+						<a href="/Product/manufacturers">Производители</a> 
 				</ul>
 			</div> <br><br> </div>
 		<jsp:include page="/views/footer.jsp" /> 
