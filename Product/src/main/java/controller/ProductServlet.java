@@ -5,11 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
-
 import dao.ConnectionProperty;
 import dao.ManufacturerDbDAO;
 import dao.ProductDbDAO;
@@ -62,6 +60,33 @@ public class ProductServlet extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ProductDbDAO dao = new ProductDbDAO();
+		ManufacturerDbDAO daoManufacturer = new ManufacturerDbDAO();
+		
+		String name = request.getParameter("name");
+		String weight = request.getParameter("weight");
+		String width = request.getParameter("width");
+		String height = request.getParameter("height");
+		String length = request.getParameter("length");
+		String manufacturer = request.getParameter("manufacturer");
+		
+		int index1 = manufacturer.indexOf('='); 
+		int index2 = manufacturer.indexOf(","); 
+		
+		String m1 = manufacturer.substring(index1 + 1, index2);
+		Long idManufacturer = Long.parseLong(m1.trim());
+
+		try {
+			Manufacturer mn = daoManufacturer.findById(idManufacturer);
+			Product newProduct = new Product(name, Float.parseFloat(weight), 
+					Float.parseFloat(width), Float.parseFloat(height), Float.parseFloat(length), idManufacturer, mn);
+			
+			Long index = dao.insert(newProduct);
+			System.out.println("Adding result: " + index );
+		} 
+		catch (DAOException e) {
+			e.printStackTrace();
+		}
 		doGet(request, response);
 	}
 	

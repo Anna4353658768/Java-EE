@@ -40,12 +40,12 @@ public class ProductDbDAO implements RepositoryDAO<Product> {
 	public Long insert (Product product) throws DAOException {
 		try (Connection con = getConnection(); PreparedStatement pst = con.prepareStatement(insert_product, new String[] { "id" })) {
 			Long Id = -1L;
-			pst.setString(1, product.getIdManufacturer().toString());
-			pst.setString(2, product.getName().toString());
-			pst.setString(3, product.getWeight().toString());
-			pst.setString(4, product.getWidth().toString());
-			pst.setString(5, product.getHeight().toString());
-			pst.setString(6, product.getLength().toString());
+			pst.setLong(1, product.getIdManufacturer());
+			pst.setString(2, product.getName());
+			pst.setFloat(3, product.getWeight());
+			pst.setFloat(4, product.getWidth());
+			pst.setFloat(5, product.getHeight());
+			pst.setFloat(6, product.getLength());
 			pst.executeUpdate();
 			ResultSet gk = pst.getGeneratedKeys();
 			if (gk.next()) {

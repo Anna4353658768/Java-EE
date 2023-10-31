@@ -66,8 +66,25 @@ public class ManufacturerServlet extends HttpServlet {
 	HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ManufacturerDbDAO dao = new ManufacturerDbDAO();
+		String name = request.getParameter("manufacturer");
+		String country = request.getParameter("country");
+		String person = request.getParameter("person");
+		String phone = request.getParameter("phone");
+		
+		Manufacturer newManufacturer = new Manufacturer(name, country, person, phone);
+		try {
+			Long index = dao.insert(newManufacturer);
+			System.out.println("Adding result: " + index );
+		} 
+		catch (DAOException e) {
+			e.printStackTrace();
+		}
 		doGet(request, response);
 	}
+	
+	
+	
 	
 	
 }
