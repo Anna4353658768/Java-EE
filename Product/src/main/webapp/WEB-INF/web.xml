@@ -19,4 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Product</display-name>
+    <servlet-name>Product</servlet-name>
+    <servlet-class>controller.Product</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Product</servlet-name>
+    <url-pattern>/Product</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Manufacturer</display-name>
+    <servlet-name>Manufacturer</servlet-name>
+    <servlet-class>controller.Manufacturer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Manufacturer</servlet-name>
+    <url-pattern>/Manufacturer</url-pattern>
+  </servlet-mapping>
 </web-app>
