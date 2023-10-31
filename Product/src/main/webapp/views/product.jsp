@@ -2,22 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page import="domain.Manufacturer"%>
 <%@ page import="domain.Product"%>
-<%
-	Manufacturer m1 = new Manufacturer(1l,"Юг стол","Россия","Иванов И.И.","+7(961)-289-44-39");
-	Manufacturer m2 = new Manufacturer(2l, "Мебельград","Россия","Рогов А.А.","+7(961)-289-55-24");
-	Manufacturer m3= new Manufacturer(3l, "Диван опт","Беларусь","Лыткин А.Р.","+7(961)-289-44-39");
-	Manufacturer m4 = new Manufacturer(4l, "Икея","Россия","Зуева Т.Е.","+7(961)-289-33-57");
-	Manufacturer[] manufacturers = new Manufacturer[]{m1, m2, m3, m4};
-	pageContext.setAttribute("manufacturers", manufacturers);
-	
-	Product p1 = new Product(1l,"Стул", 4.5f, 0.5f, 0.5f, 1f, 1l, m1);
-	Product p2 = new Product(2l,"Шкаф", 15f, 2.5f, 2f, 1f, 2l, m2);
-	Product p3 = new Product(3l,"Стол", 7f, 1f, 1f, 1.5f, 3l, m3);
-	Product p4 = new Product(4l,"Диван", 25f, 2f, 2f, 0.5f, 4l, m4);
-	
-	Product[] products = new Product[]{p1, p2, p3, p4};
-	pageContext.setAttribute("products", products);
-%>
+
 
 <!DOCTYPE html>
 <html>

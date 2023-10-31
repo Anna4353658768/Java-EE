@@ -1,12 +1,21 @@
 package controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+
+import dao.ConnectionProperty;
+import dao.ManufacturerDbDAO;
+import dao.ProductDbDAO;
+import domain.Manufacturer;
+import domain.Product;
+import exception.DAOException;
 
 /**
 * Servlet implementation class RoleServlet_
@@ -14,39 +23,45 @@ import java.io.IOException;
 @WebServlet("/products")
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ConnectionProperty prop;
  
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public ProductServlet() {
+
+	public ProductServlet() throws FileNotFoundException, IOException {
 		super();
-		// TODO Auto-generated constructor stub
+		prop = new ConnectionProperty();
 	}
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, 
-	HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, 
-			HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("text/html");
-//		PrintWriter writer = response.getWriter();
-//		try {
-//			writer.println("<h2>Привет ProductServlet</h2>");
-//		} finally {
-//			writer.close(); 
-//		}
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/product.jsp");
-        requestDispatcher.forward(request, response);
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		String userPath;
+		List<Product> products;
+		List<Manufacturer> manufacturers;
+		ManufacturerDbDAO daoManufacturer = new ManufacturerDbDAO();
+		ProductDbDAO dao = new ProductDbDAO();
+		
+		try {
+			products = dao.findAll();
+			manufacturers = daoManufacturer.findAll();
+			for (Product product: products) {
+				product.setManufacturer(daoManufacturer.FindById(product.getIdManufacturer(), manufacturers));
+			}
+			request.setAttribute("products", products);
+			request.setAttribute("manufacturers", manufacturers);
+		} 
+		catch (DAOException e) {
+			e.printStackTrace();
+		}
+		
+		userPath = request.getServletPath();
+		if("/products".equals(userPath)){
+			request.getRequestDispatcher("/views/product.jsp").forward(request, response);
+		}
 	}
 	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, 
-	HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, 
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 	
