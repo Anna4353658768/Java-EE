@@ -63,12 +63,13 @@ public class ProductDbDAO implements RepositoryDAO<Product> {
 	@Override
 	public void update(Product product) throws DAOException {
 		try (Connection con = getConnection(); PreparedStatement pst = con.prepareStatement(edit_product)) {
-			pst.setString(1, product.getIdManufacturer().toString());
+			pst.setLong(1, product.getIdManufacturer());
 			pst.setString(2, product.getName().toString());
-			pst.setString(3, product.getWeight().toString());
-			pst.setString(4, product.getWidth().toString());
-			pst.setString(5, product.getHeight().toString());
-			pst.setString(6, product.getLength().toString());
+			pst.setFloat(3, product.getWeight());
+			pst.setFloat(4, product.getWidth());
+			pst.setFloat(5, product.getHeight());
+			pst.setFloat(6, product.getLength());
+			pst.setLong(7, product.getId());
 			pst.executeUpdate();
 		} 
 		catch (Exception e) {

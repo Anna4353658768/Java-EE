@@ -47,15 +47,19 @@
 									<td>${manufacturer.getPerson()}</td>
 									<td>${manufacturer.getPhone()}</td>
 									<td width="20">
-										<a href="#" role="button" class="btn btn-outline-primary">
+										<a href="<c:url value="/editmanufacturer?id=${manufacturer.getId()}" />"
+											role="button" class="btn btn-outline-primary">
 											<img src="images/icon-edit.png" alt="Редактировать" width="30" height="30" >
 										</a>
 									</td>
 									<td width="20">
-										<a href="#" role="button" class="btn btn-outline-primary">
-											<img src="images/icon-delete.png" alt="Удалить" width="30" height="30">
+										<a href="<c:url value="/deletemanufacturer?id=${manufacturer.getId()}" />"
+											role="button" class="btn btn-outline-primary">
+											<img src="images/icon-delete.png" alt="Удалить" width="30" height="30"
+												onclick="return confirm('Удалить производителя : '+${manufacturer.getName()}+'?')">
 										</a>
 									</td>
+									
 								</tr>
 							</c:forEach>
 						</tbody>

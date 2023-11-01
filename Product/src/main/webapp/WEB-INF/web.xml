@@ -39,4 +39,54 @@
     <servlet-name>Manufacturer</servlet-name>
     <url-pattern>/Manufacturer</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditManufacturerServlet</display-name>
+    <servlet-name>EditManufacturerServlet</servlet-name>
+    <servlet-class>controller.EditManufacturerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditManufacturerServlet</servlet-name>
+    <url-pattern>/EditManufacturerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteRoleServlet</display-name>
+    <servlet-name>DeleteRoleServlet</servlet-name>
+    <servlet-class>controller.DeleteRoleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteRoleServlet</servlet-name>
+    <url-pattern>/DeleteRoleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteManufacturerServlet</display-name>
+    <servlet-name>DeleteManufacturerServlet</servlet-name>
+    <servlet-class>controller.DeleteManufacturerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteManufacturerServlet</servlet-name>
+    <url-pattern>/DeleteManufacturerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProductServlet</display-name>
+    <servlet-name>EditProductServlet</servlet-name>
+    <servlet-class>controller.EditProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProductServlet</servlet-name>
+    <url-pattern>/EditProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteProductServlet</display-name>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <servlet-class>controller.DeleteProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <url-pattern>/DeleteProductServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

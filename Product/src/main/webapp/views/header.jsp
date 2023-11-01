@@ -13,7 +13,7 @@
 	<!-- Header -->
 	<nav class="navbar navbar-light bg-primary">
 		<div class="container-fluid"> 
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/Product">
  				<img src="images/product.png" alt="" width="80" height="80" >
  			</a>
 			<h2>Управление товарами</h2>

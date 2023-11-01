@@ -59,15 +59,19 @@
 									<td>${product.getLength()}</td>
 
 									<td width="20">
-										<a href="#" role="button" class="btn btn-outline-primary">
+										<a href="<c:url value="/editproduct?id=${product.getId()}"/>"
+											role="button" class="btn btn-outline-primary">
 											<img alt="Редактировать"src="images/icon-edit.png" width="30" height="30">
 										</a> 
 									</td>
 									<td width="20">
-										<a href="#" role="button" class="btn btn-outline-primary">
-											<img alt="Удалить" src="images/icon-delete.png" width="30" height="30">
+										<a href="<c:url value="/deleteproduct?id=${product.getId()}" />"
+											role="button" class="btn btn-outline-primary">
+											<img alt="Удалить" src="images/icon-delete.png" width="30" height="30"
+												onclick="return confirm('Удалить товар: '+${product.getName()}+'?')">
 										</a>
 									</td>
+	
 								</tr>
 							</c:forEach>
 						</tbody>
