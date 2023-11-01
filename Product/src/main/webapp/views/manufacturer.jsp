@@ -56,7 +56,7 @@
 										<a href="<c:url value="/deletemanufacturer?id=${manufacturer.getId()}" />"
 											role="button" class="btn btn-outline-primary">
 											<img src="images/icon-delete.png" alt="Удалить" width="30" height="30"
-												onclick="return confirm('Удалить производителя : '+${manufacturer.getName()}+'?')">
+												onclick="return confirm('Удалить производителя с кодом: '+${manufacturer.getId()}+'?')">
 										</a>
 									</td>
 									
